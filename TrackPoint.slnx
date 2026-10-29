@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TrackPoint.Api/TrackPoint.Api.csproj" />
+  <Project Path="TrackPoint.Tests/TrackPoint.Tests.csproj" />
+</Solution>

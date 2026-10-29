@@ -1,0 +1,58 @@
+@baseUrl = http://localhost:5080
+
+### 1. Listar vehículos
+GET {{baseUrl}}/api/vehicles
+
+### 2. Crear un vehículo
+POST {{baseUrl}}/api/vehicles
+Content-Type: application/json
+
+{
+  "name": "BMW 01",
+  "licensePlate": "123851TO"
+}
+
+### 3. Consultar el vehículo con ID 1
+GET {{baseUrl}}/api/vehicles/53
+
+### 4. Actualizar el vehículo con ID 1
+PUT {{baseUrl}}/api/vehicles/9
+Content-Type: application/json
+
+{
+  "name": "Mercedes Benz 01",
+  "licensePlate": "1234ABC",
+  "isActive": false
+}
+
+### 5. Eliminar el vehículo con ID 1
+DELETE {{baseUrl}}/api/vehicles/4
+
+################
+# Validaciones y pruebas #
+################
+
+### 1. Crear un vehículo sin nombre: debe devolver un error 400 Bad Request
+POST {{baseUrl}}/api/vehicles
+Content-Type: application/json
+
+{
+  "name": "",
+  "licensePlate": "1234ABC",
+  "isActive": true
+}
+
+### 2. Crear un vehículo con matrícula duplicada: debe devolver un error 409 Conflict
+POST {{baseUrl}}/api/vehicles
+Content-Type: application/json
+
+{
+  "name": "Otra furgoneta",
+  "licensePlate": "1234ABC"
+}
+
+### 3. Eliminar un vehículo que no existe: debe devolver un error 404 Not Found
+DELETE {{baseUrl}}/api/vehicles/5
+
+### 4. Método no permitido
+PATCH {{baseUrl}}/api/vehicles/1
